@@ -40,8 +40,8 @@ public class SyncServerApplication {
         idToWaitingStatusClientMap.put(clientId, true);
         logger.info("Client {} requested permission. Waiting clients: {}", clientId, idToWaitingStatusClientMap.size());
 
-        // Если в списке ожидания два клиента, разрешаем обучение
-        if (idToWaitingStatusClientMap.size() >= 2) {
+        // Если в списке ожидания три клиента, разрешаем обучение
+        if (idToWaitingStatusClientMap.size() >= 3) {
             activeClients.set(2); // Устанавливаем счетчик активных клиентов в 2
             idToWaitingStatusClientMap.clear(); // Очищаем список ожидания
             logger.info("Permission granted to two clients.");
