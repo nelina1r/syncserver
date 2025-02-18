@@ -42,12 +42,12 @@ public class SyncServerApplication {
 
         // Если в списке ожидания три клиента, разрешаем обучение
         if (idToWaitingStatusClientMap.size() >= 3) {
-            activeClients.set(2); // Устанавливаем счетчик активных клиентов в 2
+            activeClients.set(3); // Устанавливаем счетчик активных клиентов в 3
             idToWaitingStatusClientMap.clear(); // Очищаем список ожидания
-            logger.info("Permission granted to two clients.");
+            logger.info("Permission granted to 3 clients.");
             return ResponseEntity.ok("Permission granted");
         } else {
-            // Если клиент только один, он должен ждать
+            // Если клиентов < 3, они должны ждать
             return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body("Waiting for another client");
         }
     }
